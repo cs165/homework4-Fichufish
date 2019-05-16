@@ -12,21 +12,20 @@ class MenuScreen {
 
 class Song {
   constructor() {
+    this.songInfo = {};
+    
+    this.loadSongs();
+    console.log(this.songInfo);
+  }
+
+  loadSongs() {
     const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
+    const onJsonReady = (json) => {
+      this.songInfo = json.title;
+      console.log(this.songInfo);
+    };
     fetch(JSON_PATH)
-      .then(this._onResponse)
-      .then(this._onJsonReady);
-
-    //this._onJsonReady = this._onJsonReady.bind(this);
+      .then(reponse => reponse.json())
+      .then(onJsonReady);
   }
-
-  _onJsonReady(json) {
-    //this.songInfo = json.songs;
-    console.log(json);
-  }
-
-  _onResponse(response) {
-    return response.json();
-  }
-
 }
