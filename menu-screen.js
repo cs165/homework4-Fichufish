@@ -14,7 +14,7 @@ class Song {
   constructor() {
     this.songInfo = {};
     
-    this.loadSongs = this.oadSongs.bind(this);
+    this.loadSongs = this.loadSongs.bind(this);
     this.loadSongs();
     console.log(this.songInfo);
   }
