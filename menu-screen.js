@@ -21,7 +21,7 @@ class Song {
   loadSongs() {
     const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
     const onJsonReady = (json) => {
-      this.songInfo = json.title;
+      this.songInfo = json;
       console.log(this.songInfo);
     };
     fetch(JSON_PATH)
