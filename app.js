@@ -5,6 +5,7 @@
 class App {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
+    const menuScreen = new MenuScreen();
   }
   // TODO(you): Add methods as necessary.
 }
