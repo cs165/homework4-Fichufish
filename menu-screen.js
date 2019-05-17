@@ -14,32 +14,28 @@ class Song {
   constructor() {
     this.songInfo = {};
     
-    this.loadSongs = this.loadSongs.bind(this);
-    
-    this.loadSongs();
-    console.log(this.songInfo);
+    //this._loadSongs = this._loadSongs.bind(this);
+
+    this._loadSongs();
   }
 
-  loadSongs() {
+  _loadSongs() {
     const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
-    function onJsonReady(json) {
+    const onJsonReady = (json) => {
       this.songInfo = json;
-      console.log(this.songInfo);
-      this.createSongs();
+      this._createSongs();
     };
     fetch(JSON_PATH)
-      .then(response => response.json())
-      .then(onJsonReady.bind(this));
+      .then(reponse => reponse.json())
+      .then(onJsonReady);
   }
-  createSongs() {
+
+  _createSongs() {
     console.log(this.songInfo);
-    //const songSelector = document.querySelector('select#song-selector');
-    //const SONGS = Object.values(this.songInfo);
-    //for(let i=0; i<SONGS.length; i++) {
-    //  songSelector.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
-    //}
+    const songSelector = document.querySelector('select#song-selector');
+    const SONGS = Object.values(this.songInfo);
+    for(let i=0; i<SONGS.length; i++) {
+      songSelector.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
+    }
   }
-  
-  
-  
 }
