@@ -11,24 +11,26 @@ class MenuScreen {
 }
 
 class Song {
-  constructor() {    
+  constructor() {
+    this.songInfo = {};
     this.loadSongs();
+    this.createSongs();
+    console.log(this.songInfo);
   }
 
   loadSongs() {
     const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
-    const onJsonReady = (json) => {
+    function onJsonReady(json) {
       this.songInfo = json;
       console.log(this.songInfo);
-      this._createSongs(this.songInfo);
     };
     fetch(JSON_PATH)
       .then(reponse => reponse.json())
       .then(onJsonReady);
   }
-  _createSongs(songInfo) {
+  createSongs() {
     const songSelector = document.querySelector('select#song-selector');
-    const SONGS = Object.values(songInfo);
+    const SONGS = Object.values(this.songInfo);
     for(let i=0; i<SONGS.length; i++) {
       songSelector.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
     }
