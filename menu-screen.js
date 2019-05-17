@@ -13,8 +13,10 @@ class MenuScreen {
 class Song {
   constructor() {
     this.songInfo = {};
+    
+    this.loadSongs = this.loadSongs.bind(this);
+    
     this.loadSongs();
-    this.createSongs();
     console.log(this.songInfo);
   }
 
@@ -23,17 +25,19 @@ class Song {
     function onJsonReady(json) {
       this.songInfo = json;
       console.log(this.songInfo);
+      this.createSongs();
     };
     fetch(JSON_PATH)
-      .then(reponse => reponse.json())
-      .then(onJsonReady);
+      .then(response => response.json())
+      .then(onJsonReady.bind(this));
   }
   createSongs() {
-    const songSelector = document.querySelector('select#song-selector');
-    const SONGS = Object.values(this.songInfo);
-    for(let i=0; i<SONGS.length; i++) {
-      songSelector.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
-    }
+    console.log(this.songInfo);
+    //const songSelector = document.querySelector('select#song-selector');
+    //const SONGS = Object.values(this.songInfo);
+    //for(let i=0; i<SONGS.length; i++) {
+    //  songSelector.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
+    //}
   }
   
   
