@@ -5,7 +5,7 @@
 class MenuScreen {
   constructor(containerElement) {
     // TODO(you): Implement the constructor and add fields as necessary.
-    this.selectContainer = containerElement.querySelector('select#song-selector');
+    this.selectContainer = containerElement.querySelector('#song-selector');
     const songs = new Song(this.selectContainer);
     this.randomTheme();
   }
