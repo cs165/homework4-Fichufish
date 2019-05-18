@@ -40,7 +40,8 @@ class Song {
     console.log(containerElement);
     const SONGS = Object.values(this.songInfo);
     for(let i=0; i<SONGS.length; i++) {
-      containerElement.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
+      const title = SONGS[i].artist + ': ' + SONGS[i].title;
+      containerElement.options.add(new Option(title, SONGS[i].songUrl));
     }
   }
 }
