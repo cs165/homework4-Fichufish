@@ -3,22 +3,26 @@
 //
 // See HW4 writeup for more hints and details.
 class MenuScreen {
-  constructor() {
+  constructor(containerElement) {
     // TODO(you): Implement the constructor and add fields as necessary.
-    this.containerElement = document.querySelector('select#song-selector');
-    const song = new Song(this.containerElement);
+    this.selectContainer = containerElement.querySelector('select#song-selector');
+    const songs = new Song(this.selectContainer);
+    this.randomTheme();
   }
   // TODO(you): Add methods as necessary.
+  randomTheme() {
+    const THEME = ['candy', 'charlie brown', 'computers', 'dance', 'donuts', 'hello kitty', 'flowers', 'nature', 'turtles', 'space'];
+    const index = Math.floor(Math.random() * THEME.length);
+    const inputContainer = document.querySelector('input#query-input');
+    inputContainer.value = THEME[index];
+  }
 }
 
 class Song {
   constructor(containerElement) {
-    this.containerElement = containerElement;
     this.songInfo = {};
-    
-    //this._loadSongs = this._loadSongs.bind(this);
 
-    this._loadSongs(this.containerElement);
+    this._loadSongs(containerElement);
   }
 
   _loadSongs(containerElement) {
@@ -33,11 +37,10 @@ class Song {
   }
 
   _createSongs(containerElement) {
-    console.log(containerElement)
-    const songSelector = document.querySelector('select#song-selector');
+    console.log(containerElement);
     const SONGS = Object.values(this.songInfo);
     for(let i=0; i<SONGS.length; i++) {
-      songSelector.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
+      containerElement.options.add(new Option(SONGS[i].title, SONGS[i].songUrl));
     }
   }
 }
