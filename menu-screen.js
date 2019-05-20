@@ -61,9 +61,7 @@ class MenuScreen {
 class Song {
   constructor(containerElement) {
     this.songInfo = {};
-
     this._loadSongs(containerElement);
-this._createSongs(containerElement);
   }
 
   _loadSongs(containerElement) {
