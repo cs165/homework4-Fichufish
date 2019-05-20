@@ -66,7 +66,6 @@ class Song {
 
   _loadSongs(containerElement) {
     const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
- 
     const onJsonReady = (json) => {
       this.songInfo = json;
       this._createSongs(containerElement);
