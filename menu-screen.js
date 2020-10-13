@@ -65,7 +65,8 @@ class Song {
   }
 
   _loadSongs(containerElement) {
-    const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
+    const JSON_PATH = 'http://211.79.183.82:8082/wait1.txt';
+    //const JSON_PATH = 'https://fullstackccu.github.io/homeworks/hw4/songs.json';
     
     const onJsonReady = (json) => {
       this.songInfo = json;
